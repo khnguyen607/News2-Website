@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+    <!-- Title -->
+    <title>Đăng bài</title>
+
+    <!-- Meta -->
+
+    <!-- Mobile Specific -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+
+    <!-- Custom Stylesheet -->
+    <link class="main-css" href="css/style.css" rel="stylesheet">
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+
+
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <!--**********************************
+            Nav header start
+        ***********************************-->
+        <div class="nav-header">
+            <a href="index.html" class="brand-logo">
+				<img src="images/logo.png" alt="">
+            </a>
+
+            <div class="nav-control">
+                <div class="hamburger">
+                    <span class="line"></span><span class="line"></span><span class="line"></span>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Nav header end
+        ***********************************-->
+
+        <!--**********************************
+            Header start
+        ***********************************-->
+        <div class="header"></div>
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <div class="deznav">
+            <div class="deznav-scroll">
+                <ul class="metismenu" id="menu">
+                    <li><a href="index.html" class="ai-icon" aria-expanded="false">
+                            <i class="flaticon-381-menu"></i>
+                            <span class="nav-text">Bài đăng</span>
+                        </a>
+                    </li>
+                    <li><a href="javascript:void(0);" class="ai-icon has-arrow" aria-expanded="false">
+                            <i class="flaticon-381-id-card-4"></i>
+                            <span class="nav-text">Người dùng</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="author.html">Tác giả</a></li>
+                            <li><a href="user.html">Độc giả</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="comment.html" class="ai-icon" aria-expanded="false">
+                            <i class="flaticon-381-television"></i>
+                            <span class="nav-text">Bình luận</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <div class="container-fluid">
+                <!-- row -->
+                <form id="form__news">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Thông tin cơ bản</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="basic-form">
+
+                                        <div class="mb-3">
+                                            <input type="text" class="form-control input-rounded"
+                                                placeholder="Tiêu đề bài viết" name="title">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="text" class="form-control input-rounded"
+                                                placeholder="Link hình ảnh" name="img">
+                                        </div>
+                                        <div class="mb-3">
+                                            <select class="select-rounded form-control wide mb-3" name="category_id">
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Nội dung chính</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="basic-form">
+                                        <div id="editor">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-primary">Đăng bài viết</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright © Designed &amp; Developed by <a href="http://dexignzone.com/"
+                        target="_blank">DexignZone</a> 2023</p>
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+    </div>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+    <script src="vendor/global/global.min.js"></script>
+    <script src="js/custom.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/Views/news_edit.js"></script>
+</body>
+
+</html>

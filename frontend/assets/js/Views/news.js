@@ -1,5 +1,6 @@
 function defaultFunc() {
     var cat = new URLSearchParams(window.location.search).get('cat')
+    var query = new URLSearchParams(window.location.search).get('q')
     var divtoNew = document.querySelector('.news__info').cloneNode(true)
     // hàm hiển thị bài viết 
     function show_news() {
@@ -7,18 +8,25 @@ function defaultFunc() {
         fetch('../backend/index.php?controller=new')
             .then(response => response.json())
             .then(data => {
-                data = data.filter(item => {
-                    return item.category_id == cat
-                })
+                if (query) {
+                    data = data.filter(item => {
+                        return item.title.toLowerCase().includes(query.toLowerCase()) && item.status == '1'
+                    })
+                } else if (cat) {
+                    data = data.filter(item => {
+                        return item.category_id == cat && item.status == '1'
+                    })
+                }
+
                 data.forEach(item => {
                     console.log(item)
                     var divNew = divtoNew.cloneNode(true)
                     divNew.querySelector('h3 a').textContent = item.title
-                    divNew.querySelector('p').textContent = item.content
-                    divNew.querySelector('i.fi.flaticon-calendar').parentNode.textContent = item.date
+                    divNew.querySelector('.views').textContent = item.views
+                    let date = item.date.split('-')
+                    divNew.querySelector('.date').textContent = `${date[2]} Th${date[1]}, ${date[0]}`
                     divNew.querySelector('img').src = item.img
                     divNew.querySelectorAll('a').forEach(a => a.href = `new.html?id=` + item.id)
-                    // **thêm bình luận và chỉnh sửa max content 
                     document.querySelector('.news__list').appendChild(divNew)
                 });
             })
@@ -26,6 +34,7 @@ function defaultFunc() {
     }
     function news_hot() {
         var newhot__info = document.querySelector('.newhot__info').cloneNode(true)
+        document.querySelector('.newhot__list').innerHTML = ''
         fetch('../backend/index.php?controller=new')
             .then(response => response.json())
             .then(data => {
@@ -43,7 +52,6 @@ function defaultFunc() {
                 new_hot.sort((a, b) => {
                     return b.views - a.views
                 }).slice(0, 5).forEach(item => {
-                    document.querySelector('.newhot__list').innerHTML = ''
                     var newhot__infoClone = newhot__info.cloneNode(true)
                     console.log(newhot__infoClone)
                     newhot__infoClone.querySelector('img').src = item.img

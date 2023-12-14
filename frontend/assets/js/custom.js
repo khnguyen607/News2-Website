@@ -35,6 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
             fetch('../backend/index.php?controller=category')
                 .then(response => response.json())
                 .then(data => {
+                    data = data.filter(item=>{
+                        return item.status == '1'
+                    })
                     data.forEach(item => {
                         var li = document.createElement('li')
                         li.classList.add('menu-item-has-children')

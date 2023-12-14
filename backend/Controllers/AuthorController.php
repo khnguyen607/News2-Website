@@ -46,18 +46,6 @@ class AuthorController extends BaseController
         }
     }
 
-    public function editUser()
-    {
-        $id = $_GET['id'];
-        $data = [
-            'email'  => $_POST['email'],
-            'name'  => $_POST['name']
-        ];
-
-        $this->authorModel->edit($id, $data);
-        header("Location: ../frontend/dashboard.html?tab=mgr__user");
-    }
-
     public function delAuthor()
     {
         $id = $_GET['id'];

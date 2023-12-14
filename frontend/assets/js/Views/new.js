@@ -13,7 +13,7 @@ function defaultFunc() {
                 document.querySelector('.new__author').textContent = data.author
                 document.querySelector('.new__views').textContent = data.views
                 document.querySelector('.new__title').textContent = data.title
-                document.querySelector('.new__content').textContent = data.content
+                document.querySelector('.new__content').innerHTML = data.content
                 document.querySelector('.new__date').textContent = data.date
                 document.querySelector('.new__img').src = data.img
                 // ** thêm thông tin tác giả và bình luận 
@@ -21,6 +21,9 @@ function defaultFunc() {
                 fetch('../backend/index.php?controller=comment&action=getinNew&id=' + id)
                     .then(response => response.json())
                     .then(data => {
+                        data = data.filter(item=>{
+                            return item.status == '1'
+                        })
                         document.querySelectorAll('.cmt__count').forEach(item => {
                             item.textContent = data.length
                         })
@@ -39,9 +42,13 @@ function defaultFunc() {
     // lây ra thông tin nóng trong tuần hiện tại
     function news_hot() {
         var newhot__info = document.querySelector('.newhot__info').cloneNode(true)
+        document.querySelector('.newhot__list').innerHTML = ''
         fetch('../backend/index.php?controller=new')
             .then(response => response.json())
             .then(data => {
+                data = data.filter(item=>{
+                    return item.status == '1'
+                })
                 // Lấy ngày hiện tại
                 var currentDate = new Date();
                 // Lấy ngày bắt đầu của tuần hiện tại (ngày thứ Hai)
@@ -56,8 +63,6 @@ function defaultFunc() {
                 new_hot.sort((a, b) => {
                     return b.views - a.views
                 }).slice(0, 5).forEach(item => { 
-                    document.querySelector('.newhot__list').innerHTML = ''
-
                     var newhot__infoClone = newhot__info.cloneNode(true)
                     console.log(newhot__infoClone)
                     newhot__infoClone.querySelector('img').src = item.img
